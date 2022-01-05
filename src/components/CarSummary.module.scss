@@ -1,0 +1,36 @@
+@import "../variables.scss";
+
+.container {
+  background: $dark-color;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //   justify-content: center;
+  color: $light-color;
+  padding: 3em;
+}
+
+.title {
+  align-self: flex-end;
+  margin-bottom: 1em;
+}
+
+.image {
+  width: 100%;
+  height: 70%;
+  background-color: $light-color;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+
+.option {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  margin-top: 1em;
+}

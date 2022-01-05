@@ -1,0 +1,44 @@
+@import "../variables.scss";
+
+.btn {
+  width: 150px;
+  height: 50px;
+  background: $config-btn-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $config-btn-font-color;
+  font-weight: 700;
+
+  &:hover {
+    cursor: pointer;
+    background: $config-btn-hover-color;
+    color: $config-btn-font-hover-color;
+  }
+}
+
+.selected {
+  background: $config-btn-selected-color;
+  color: $config-btn-font-selected-color;
+
+  &:hover {
+    background: $config-btn-selected-hover-color;
+    color: $config-btn-font-selected-hover-color;
+  }
+}
+
+.color {
+  width: 50px;
+
+  &:hover {
+    outline: 3px solid $config-colorBtn-outline-hover-color;
+  }
+}
+
+.color.selected {
+  outline: 3px solid $config-colorBtn-outline-selected-color;
+
+  &:hover {
+    outline: 3px solid $config-colorBtn-outline-selected-hover-color;
+  }
+}

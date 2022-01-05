@@ -1,0 +1,13 @@
+@import "../variables.scss";
+
+.title {
+  text-align: center;
+  margin: 0.5em;
+}
+
+@media (min-width: $media-desktop-width) {
+  .title {
+    text-align: unset;
+    margin: unset;
+  }
+}
