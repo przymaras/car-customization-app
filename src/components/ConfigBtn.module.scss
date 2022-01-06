@@ -1,12 +1,14 @@
 @import "../variables.scss";
 
 .btn {
-  width: 150px;
-  height: 50px;
+  width: 100%;
+  max-width: 200px;
+  min-height: 50px;
   background: $config-btn-color;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: $config-btn-font-color;
   font-weight: 700;
 
@@ -15,11 +17,17 @@
     background: $config-btn-hover-color;
     color: $config-btn-font-hover-color;
   }
+
+  p {
+    padding: 0.3em;
+  }
 }
 
 .selected {
   background: $config-btn-selected-color;
   color: $config-btn-font-selected-color;
+  transform: scale(1.05);
+  box-shadow: 1px 4px 4px #a0a0a0;
 
   &:hover {
     background: $config-btn-selected-hover-color;
@@ -29,16 +37,19 @@
 
 .color {
   width: 50px;
+  height: 50px;
 
   &:hover {
     outline: 3px solid $config-colorBtn-outline-hover-color;
+    outline-offset: 2px;
   }
 }
 
 .color.selected {
   outline: 3px solid $config-colorBtn-outline-selected-color;
+  outline-offset: 2px;
 
   &:hover {
-    outline: 3px solid $config-colorBtn-outline-selected-hover-color;
+    outline: 3px solid $config-colorBtn-outline-hover-color;
   }
 }

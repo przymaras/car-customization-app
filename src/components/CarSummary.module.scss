@@ -3,11 +3,11 @@
 .container {
   background: $dark-color;
   width: 100%;
-  height: 100%;
+  max-width: $summary-max-width;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  //   justify-content: center;
   color: $light-color;
   padding: 3em;
 }
@@ -19,18 +19,18 @@
 
 .image {
   width: 100%;
-  height: 70%;
   background-color: $light-color;
   padding: 2em;
   margin-bottom: 1em;
 }
 
-.option {
+.price {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  margin-top: 1em;
 }
 
-.price {
-  margin-top: 1em;
+@media (max-width: 300px) {
+  .container {
+    font-size: 1.5rem;
+  }
 }

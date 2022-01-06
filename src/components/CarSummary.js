@@ -1,5 +1,6 @@
 import styles from "./CarSummary.module.scss";
 import { ReactComponent as Car } from "../img/models/car-solid.svg";
+import CarSummaryCfgOpt from "./CarSummaryCfgOpt";
 
 function CarSummmary(props) {
   return (
@@ -8,25 +9,16 @@ function CarSummmary(props) {
       <div className={styles.image} style={{ color: "red" }}>
         {<Car />}
       </div>
-      <div className={styles.option}>
-        <p>Model</p>
-        <p>PRO RS3</p>
-      </div>
-      <div className={styles.option}>
-        <p>Engine</p>
-        <p>5.2L 532BHP</p>
-      </div>
-      <div className={styles.option}>
-        <p>Gearbox</p>
-        <p>Automatic</p>
-      </div>
-      <div className={styles.option}>
-        <p>Color</p>
-        <p>Red</p>
-      </div>
-      <div className={`${styles.option} ${styles.price}`}>
-        <p>Price</p>
-        <p>$255</p>
+      {props.confData.options.map((option) => (
+        <CarSummaryCfgOpt
+          key={option.id}
+          name={option.name}
+          selected={option.items[0].name}
+        />
+      ))}
+
+      <div className={styles.price}>
+        <CarSummaryCfgOpt name="Price" selected="$234" />
       </div>
     </div>
   );

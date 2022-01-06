@@ -5,16 +5,17 @@ $config-btn-hover-color: #b1b1b1;
 $config-btn-font-hover-color: #000000;
 
 $config-btn-selected-color: #4d4d4d;
-$config-btn-font-selected-color: #cacaca;
+$config-btn-font-selected-color: #dfdfdf;
 
 $config-btn-selected-hover-color: #181818;
 $config-btn-font-selected-hover-color: #cacaca;
 
-$config-colorBtn-outline-hover-color: #a85959;
+$config-colorBtn-outline-hover-color: #7a7a7a;
 $config-colorBtn-outline-selected-color: #000000;
-$config-colorBtn-outline-selected-hover-color: #1f22d8;
 
 $dark-color: #181818;
 $light-color: #eeeeee;
 
-$media-desktop-width: 1000px;
+$media-desktop-width: 900px;
+$media-tablet-width: 430px;
+$summary-max-width: 430px;

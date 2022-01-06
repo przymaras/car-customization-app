@@ -16,7 +16,7 @@ function App() {
           <p>Loading ...</p>
         )}
       </div>
-      {confDataAvailable && <CarSummmary />}
+      {confDataAvailable && <CarSummmary confData={confData} />}
     </div>
   );
 }
