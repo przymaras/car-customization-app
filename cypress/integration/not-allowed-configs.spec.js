@@ -4,6 +4,7 @@ import dummyTestData from "../dummyTestData.json";
 
 describe("Car customization app, if fetch available", () => {
   beforeEach(() => {
+    localStorage.clear();
     cy.visit("localhost:3000", {
       onBeforeLoad(win) {
         cy.stub(win, "fetch") //.withArgs('/favorite-fruits')

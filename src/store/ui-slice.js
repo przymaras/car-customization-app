@@ -13,7 +13,10 @@ const uiSlice = createSlice({
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.message,
-      };
+      }; //redux toolkit does not manipulate state directly - it uses immer under the hood
+    },
+    hideNotification(state) {
+      state.notification = null;
     },
   },
 });

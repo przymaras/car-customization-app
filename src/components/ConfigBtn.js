@@ -66,7 +66,7 @@ function ConfigBtn(props) {
     bgColor = { background: props.color };
   }
 
-  //If current config was previously selected but is currently not allowed to be selected - unselect it
+  //If current config was previously selected but it is currently not allowed to be selected - unselect it
   useEffect(() => {
     if (selected && disabled) {
       dispatch(carActions.deleteDisabledConfig(currOptName));

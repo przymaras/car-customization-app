@@ -4,6 +4,7 @@ import dummyTestData from "../dummyTestData.json";
 
 describe("Car customization app, if fetch available", () => {
   before(() => {
+    localStorage.clear();
     cy.visit("localhost:3000", {
       onBeforeLoad(win) {
         cy.stub(win, "fetch") //.withArgs('/favorite-fruits')
@@ -72,6 +73,6 @@ describe("Car customization app, if fetch data not available", () => {
   //   });
 
   it("don't renders data", () => {
-    cy.contains("Loading ...").should("exist");
+    cy.contains("Error!").should("exist");
   });
 });
