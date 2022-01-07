@@ -55,3 +55,26 @@
     outline: 3px solid $config-colorBtn-outline-hover-color;
   }
 }
+
+.disabled {
+  background: transparent;
+  border: 1px dotted #a0a0a0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+  position: relative;
+  &:hover {
+    cursor: not-allowed;
+    background: transparent;
+    &:before {
+      content: "This config option is incompatible with Your previous selections.";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      background: #e65d5d;
+      width: 200px;
+      height: min-content;
+      font-weight: 700;
+      padding: 0.3em;
+    }
+  }
+}

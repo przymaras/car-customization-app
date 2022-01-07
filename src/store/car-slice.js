@@ -21,6 +21,9 @@ const carSlice = createSlice({
         [newSelCfg.option]: newSelCfg.selected,
       };
     },
+    deleteDisabledConfig(state, action) {
+      delete state.currentConfig[action.payload];
+    },
   },
 });
 
