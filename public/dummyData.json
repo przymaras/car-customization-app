@@ -80,7 +80,6 @@
         {
           "id": 0,
           "name": "automatic",
-          "allowedGearbox": ["automatic"],
           "price": 50
         },
         {

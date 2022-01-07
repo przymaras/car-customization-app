@@ -4,7 +4,7 @@ function CarSummaryCfgOpt(props) {
   return (
     <div className={styles.option}>
       <p>{props.name}</p>
-      <p>{props.selected}</p>
+      <p>{props.value}</p>
     </div>
   );
 }

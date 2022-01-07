@@ -15,7 +15,7 @@ export const fetchCarConfigData = () => {
   return async (dispatch) => {
     try {
       const carConfigData = await fetchData("/dummyData.json");
-      dispatch(carActions.replaceCarConfig(carConfigData));
+      dispatch(carActions.replaceConfig(carConfigData));
     } catch (err) {
       dispatch(
         uiActions.showNotification({

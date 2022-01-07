@@ -11,19 +11,14 @@ function ConfigBtnsWrapper(props) {
         {props.configOption.items.map((item) => (
           <ConfigBtn
             key={item.id}
-            name={item.name}
             color={isColor && item.hex}
+            optId={props.configOption.id}
+            cfgId={item.id}
           />
         ))}
       </div>
     </div>
   );
 }
-
-ConfigBtnsWrapper.defaultProps = {
-  configOption: {
-    items: [],
-  },
-};
 
 export default ConfigBtnsWrapper;
