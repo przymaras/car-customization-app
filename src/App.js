@@ -12,6 +12,7 @@ import {
 import ConfigCategories from "./components/ConfigCategories";
 import Summary from "./components/Summary";
 import Notification from "./components/Notification";
+import SwitchBtn from "./components/SwitchBtn";
 
 let isInitial = true;
 
@@ -31,6 +32,7 @@ function App() {
   }, [dispatch]);
 
   //Load previously selected options (demo app is using localstorage)
+  //If config version has changed it will not load previous data.
   useEffect(() => {
     dispatch(
       restoreLastSession(`${confData.configName} ${confData.configVersion}`)
@@ -82,6 +84,7 @@ function App() {
       </div>
 
       {confDataAvailable && <Summary />}
+      {confDataAvailable && <SwitchBtn />}
     </div>
   );
 }

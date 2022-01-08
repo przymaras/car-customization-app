@@ -17,6 +17,7 @@ const configSlice = createSlice({
     },
     replaceCurrentConfig(state, action) {
       state.currentConfig = action.payload;
+      state.currentConfigChanged = false;
     },
     modifyCurrentConfig(state, action) {
       state.currentConfigChanged = true;
@@ -28,6 +29,10 @@ const configSlice = createSlice({
     },
     deleteDisabledConfig(state, action) {
       delete state.currentConfig[action.payload];
+    },
+    clearCurrentConfig(state) {
+      state.currentConfigChanged = false;
+      state.currentConfig = {};
     },
   },
 });

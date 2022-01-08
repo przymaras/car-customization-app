@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import styles from "./ConfigBtn.module.scss";
 
 import { configActions } from "../store/config-slice";
+
 import { carLogic } from "../logic/car-logic";
-import { useEffect } from "react";
+import { ebikeLogic } from "../logic/ebike-logic";
 
 function ConfigBtn(props) {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ function ConfigBtn(props) {
     (cat) => cat.id === props.catId
   );
 
-  //Extract properties of config options for this button
+  //Extract properties of config option for this button
   const {
     id: thisBtnOptId,
     name: thisBtnOptName,
@@ -39,6 +41,16 @@ function ConfigBtn(props) {
   switch (subject) {
     case "Car":
       disabled = carLogic(
+        thisBtnCatName,
+        thisBtnOptId,
+        thisBtnOptName,
+        currentConfig,
+        cfgCats
+      );
+      break;
+
+    case "eBike":
+      disabled = ebikeLogic(
         thisBtnCatName,
         thisBtnOptId,
         thisBtnOptName,

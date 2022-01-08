@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import dummyTestData from "../dummyTestData.json";
+import dummyTestData from "../dummyTestCarData.json";
 
 describe("Car customization app, if fetch available", () => {
   beforeEach(() => {

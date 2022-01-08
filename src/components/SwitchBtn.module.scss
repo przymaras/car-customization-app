@@ -1,0 +1,32 @@
+@import "../variables.scss";
+
+.container {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.btn {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  background: $config-btn-color;
+  color: $config-btn-font-color;
+  font-weight: 700;
+  font-size: 1.8rem;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    background: $config-btn-hover-color;
+    color: $config-btn-font-hover-color;
+  }
+
+  &:active {
+    cursor: pointer;
+    background: $config-btn-selected-color;
+    color: $config-btn-font-selected-color;
+    transform: scale(0.9);
+  }
+}

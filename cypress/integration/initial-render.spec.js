@@ -1,8 +1,8 @@
 /// <reference types="Cypress" />
 
-import dummyTestData from "../dummyTestData.json";
+import dummyTestData from "../dummyTestCarData.json";
 
-describe("Car customization app, if fetch available", () => {
+describe("Customization app, if fetch available", () => {
   before(() => {
     localStorage.clear();
     cy.visit("localhost:3000", {
@@ -56,7 +56,7 @@ describe("Car customization app, if fetch available", () => {
   });
 });
 
-describe("Car customization app, if fetch data not available", () => {
+describe("Customization app, if fetch data not available", () => {
   before(() => {
     cy.visit("localhost:3000", {
       onBeforeLoad(win) {
