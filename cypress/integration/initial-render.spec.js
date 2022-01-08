@@ -43,16 +43,16 @@ describe("Car customization app, if fetch available", () => {
 
     cy.contains("Color").should("exist");
 
-    cy.get("[class*='ConfigBtnsWrapper_container']").should("have.length", 4);
+    cy.get("[class*='ConfigCategory_container']").should("have.length", 4);
 
     cy.get("[class*='ConfigBtn_btn']").should("have.length", 14);
     cy.get("[class*='ConfigBtn_color']").should("have.length", 4);
 
-    cy.get("[class*='CarSummaryCfgOpt_option']").should("have.length", 5);
+    cy.get("[class*='SummaryRow_row']").should("have.length", 5);
 
-    cy.get("[class*='CarSummary_image']").should("have.length", 1);
+    cy.get("[class*='Summary_image']").should("have.length", 1);
 
-    cy.get("svg").should("have.length", 1);
+    cy.get("img").should("have.length", 1);
   });
 });
 

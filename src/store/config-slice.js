@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const carInitialState = {
+const configInitialState = {
   configData: {},
   configDataIsAvailable: false,
   currentConfig: {},
-  configChanged: false,
+  currentConfigChanged: false,
 };
 
-const carSlice = createSlice({
-  name: "car",
-  initialState: carInitialState,
+const configSlice = createSlice({
+  name: "config",
+  initialState: configInitialState,
   reducers: {
     replaceConfigData(state, action) {
       state.configData = action.payload; //redux toolkit does not manipulate state directly - it uses immer under the hood
@@ -19,7 +19,7 @@ const carSlice = createSlice({
       state.currentConfig = action.payload;
     },
     modifyCurrentConfig(state, action) {
-      state.configChanged = true;
+      state.currentConfigChanged = true;
       const newSelCfg = action.payload;
       state.currentConfig = {
         ...state.currentConfig,
@@ -32,6 +32,6 @@ const carSlice = createSlice({
   },
 });
 
-export const carActions = carSlice.actions;
+export const configActions = configSlice.actions;
 
-export default carSlice.reducer;
+export default configSlice.reducer;

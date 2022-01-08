@@ -62,9 +62,11 @@
   color: #a0a0a0;
   cursor: not-allowed;
   position: relative;
+
   &:hover {
     cursor: not-allowed;
     background: transparent;
+
     &:before {
       content: "This config option is incompatible with Your previous selections.";
       position: absolute;

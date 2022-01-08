@@ -1,5 +1,5 @@
 {
-  "configName": "TEST CKCONFIG",
+  "configName": "CKCONFIG",
   "configVersion": "5.1",
   "subject": "Car",
   "categories": [
@@ -81,7 +81,6 @@
         {
           "id": 0,
           "name": "automatic",
-          "allowedGearbox": ["automatic"],
           "price": 50
         },
         {
@@ -100,25 +99,25 @@
           "id": 0,
           "name": "red",
           "hex": "#ff0000",
-          "price": 5
+          "price": 20
         },
         {
           "id": 1,
           "name": "gray",
           "hex": "#d0d0d0",
-          "price": 10
+          "price": 15
         },
         {
           "id": 2,
           "name": "orange",
           "hex": "#d88756",
-          "price": 15
+          "price": 10
         },
         {
           "id": 3,
           "name": "black",
           "hex": "#181818",
-          "price": 20
+          "price": 5
         }
       ]
     }

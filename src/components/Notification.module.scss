@@ -1,6 +1,8 @@
+@import "../variables.scss";
+
 .notification {
   width: 100%;
-  background-color: #1a8ed1;
+  background-color: $notification-color;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 10%;
@@ -17,9 +19,9 @@
 }
 
 .error {
-  background-color: #690000;
+  background-color: $notification-error-color;
 }
 
 .success {
-  background-color: #1ad1b9;
+  background-color: $notification-success-color;
 }

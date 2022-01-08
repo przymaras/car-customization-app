@@ -37,7 +37,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.disabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 4);
 
@@ -61,7 +61,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.enabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 3);
 
@@ -85,7 +85,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.enabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 2);
 
@@ -109,7 +109,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.enabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 1);
 
@@ -133,7 +133,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.enabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 0);
 
@@ -158,7 +158,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.enabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 1);
 
@@ -182,7 +182,7 @@ describe("Car customization app, if fetch available", () => {
       cy.wrap(item).should("be.enabled");
     });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 2);
   });
@@ -193,27 +193,27 @@ describe("Car customization app, if fetch available", () => {
     cy.contains("manual").click();
     cy.get("[class*='ConfigBtn_color']").click({ multiple: true });
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('Not selected')")
       .should("have.length", 0);
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('WK')")
       .should("exist");
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('2.0L 166BHP')")
       .should("exist");
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('manual')")
       .should("exist");
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('black')")
       .should("exist");
 
-    cy.get("[class*='CarSummary_container']")
+    cy.get("[class*='Summary_container']")
       .find("div:contains('$35')")
       .should("exist");
   });

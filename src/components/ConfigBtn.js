@@ -2,57 +2,53 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./ConfigBtn.module.scss";
 
-import { carActions } from "../store/car-slice";
+import { configActions } from "../store/config-slice";
+import { carLogic } from "../logic/car-logic";
 import { useEffect } from "react";
 
 function ConfigBtn(props) {
   const dispatch = useDispatch();
-  const confOpts = useSelector((state) => state.car.configData.options);
-  const currentConfig = useSelector((state) => state.car.currentConfig);
+  const subject = useSelector((state) => state.config.configData.subject);
+  const cfgCats = useSelector((state) => state.config.configData.categories);
+  const currentConfig = useSelector((state) => state.config.currentConfig);
 
-  //Extract current configurable option name
-  const { name: currOptName } = confOpts.find((opt) => opt.id === props.optId);
+  //Extract category name to which this button belongs
+  const { name: thisBtnCatName } = cfgCats.find(
+    (cat) => cat.id === props.catId
+  );
 
-  //Extract current config properties
+  //Extract properties of config options for this button
   const {
-    id: cfgId,
-    name: cfgName,
-    price: cfgPrice,
-  } = confOpts
-    .find((opt) => opt.id === props.optId)
-    .items.find((item) => item.id === props.cfgId);
+    id: thisBtnOptId,
+    name: thisBtnOptName,
+    price: thisBtnOptPrice,
+  } = cfgCats
+    .find((cat) => cat.id === props.catId)
+    .options.find((opt) => opt.id === props.optId);
 
-  //Check if current config name is currently selected
+  //Check if option of this button is currently selected
   let selected;
-  if (currentConfig[currOptName]) {
-    selected = currentConfig[currOptName].name === cfgName;
+  if (currentConfig[thisBtnCatName]) {
+    selected = currentConfig[thisBtnCatName].name === thisBtnOptName;
   }
 
-  //Check if current config is allowed to be selected. If not then disable this button.
-  let disabled = true;
-  if (currOptName === "Model") {
-    disabled = false;
-  } else if (currOptName === "Color" && currentConfig["Model"]) {
-    disabled = false;
-  } else if (currOptName === "Engine" && currentConfig["Model"]) {
-    const maxAllowedEngine = confOpts
-      .find((opt) => opt.name === "Model")
-      .items.find(
-        (model) => model.id === currentConfig["Model"].id
-      ).maxEngineType;
+  //By default all options are not allowed to be selected hence are disabled.
+  let disabled;
 
-    const currentEngineType = confOpts
-      .find((opt) => opt.name === "Engine")
-      .items.find((engine) => engine.id === cfgId).type;
+  //Check if current option/button is allowed to be selected. If yes then enable this option/button.
+  switch (subject) {
+    case "Car":
+      disabled = carLogic(
+        thisBtnCatName,
+        thisBtnOptId,
+        thisBtnOptName,
+        currentConfig,
+        cfgCats
+      );
+      break;
 
-    disabled = currentEngineType > maxAllowedEngine;
-  } else if (currOptName === "Gearbox" && currentConfig["Engine"]) {
-    const allowedGearbox = confOpts
-      .find((opt) => opt.name === "Engine")
-      .items.find(
-        (engine) => engine.id === currentConfig["Engine"].id
-      ).allowedGearbox;
-    disabled = !allowedGearbox.some((type) => type === cfgName);
+    default:
+      disabled = true;
   }
 
   //Conditional CSS
@@ -66,19 +62,23 @@ function ConfigBtn(props) {
     bgColor = { background: props.color };
   }
 
-  //If current config was previously selected but it is currently not allowed to be selected - unselect it
+  //If this option/button was previously selected but it is currently not allowed to be selected - unselect it
   useEffect(() => {
     if (selected && disabled) {
-      dispatch(carActions.deleteDisabledConfig(currOptName));
+      dispatch(configActions.deleteDisabledConfig(thisBtnCatName));
     }
-  }, [selected, disabled, dispatch, currOptName]);
+  }, [selected, disabled, dispatch, thisBtnCatName]);
 
   function modifyConfigHandler() {
     if (!selected) {
       dispatch(
-        carActions.modifyCurrentConfig({
-          option: currOptName,
-          selected: { id: cfgId, name: cfgName, price: cfgPrice },
+        configActions.modifyCurrentConfig({
+          option: thisBtnCatName,
+          selected: {
+            id: thisBtnOptId,
+            name: thisBtnOptName,
+            price: thisBtnOptPrice,
+          },
         })
       );
     }
@@ -91,7 +91,7 @@ function ConfigBtn(props) {
       style={bgColor}
       disabled={disabled}
     >
-      {!props.color && <p>{cfgName}</p>}
+      {!props.color && <p>{thisBtnOptName}</p>}
     </button>
   );
 }

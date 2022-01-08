@@ -1,4 +1,4 @@
-import { carActions } from "./car-slice";
+import { configActions } from "./config-slice";
 import { uiActions } from "./ui-slice";
 
 const fetchData = async (url) => {
@@ -11,24 +11,24 @@ const fetchData = async (url) => {
   return data;
 };
 
-export const fetchCarConfigData = () => {
+export const fetchConfigData = (url) => {
   return async (dispatch) => {
     try {
       dispatch(
         uiActions.showNotification({
           status: "pending",
           title: "Loading ...",
-          message: "Fetching car config data ...",
+          message: "Fetching config data ...",
         })
       );
-      const carConfigData = await fetchData("/dummyData.json");
-      dispatch(carActions.replaceConfigData(carConfigData));
+      const configData = await fetchData(url);
+      dispatch(configActions.replaceConfigData(configData));
     } catch (err) {
       dispatch(
         uiActions.showNotification({
           status: "error",
           title: "Error!",
-          message: "Fetching car config data failed!",
+          message: "Fetching config data failed!",
         })
       );
       return;
@@ -38,7 +38,7 @@ export const fetchCarConfigData = () => {
       uiActions.showNotification({
         status: "success",
         title: "Data loaded!",
-        message: "Fetching car config data finished with success!",
+        message: "Fetching config data finished with success!",
       })
     );
 
@@ -48,14 +48,14 @@ export const fetchCarConfigData = () => {
   };
 };
 
-export const storeCurrentSession = (currentConfig) => {
+export const storeCurrentSession = (currentConfig, configName) => {
   return (dispatch) => {
-    localStorage.setItem("carConfig", JSON.stringify(currentConfig));
+    localStorage.setItem(configName, JSON.stringify(currentConfig));
     dispatch(
       uiActions.showNotification({
         status: "pending",
         title: "Saving data...",
-        message: "Saving car config data ...",
+        message: "Saving config data ...",
       })
     );
     setTimeout(() => {
@@ -64,11 +64,11 @@ export const storeCurrentSession = (currentConfig) => {
   };
 };
 
-export const restoreLastSession = () => {
+export const restoreLastSession = (configName) => {
   return (dispatch) => {
-    const lastData = JSON.parse(localStorage.getItem("carConfig"));
+    const lastData = JSON.parse(localStorage.getItem(configName));
     if (lastData) {
-      dispatch(carActions.replaceCurrentConfig(lastData));
+      dispatch(configActions.replaceCurrentConfig(lastData));
     }
   };
 };

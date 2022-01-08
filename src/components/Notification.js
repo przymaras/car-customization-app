@@ -1,4 +1,4 @@
-import classes from "./Notification.module.css";
+import classes from "./Notification.module.scss";
 
 const Notification = (props) => {
   let specialClasses = "";
